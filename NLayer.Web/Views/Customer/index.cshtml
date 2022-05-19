@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Customer List";
+}
+
+@model IEnumerable<NLayer.Core.Models.Customer>
+
+<h1>Customer List</h1> - <a class="btn btn-success" asp-controller="Customer" asp-action="Save">Create</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Birth Date</td>
+            <td>Identity No</td>
+            <td>Identity No Verified</td>
+            <td>Status Id</td>
+            <td>Created Date</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.BirthDate</td>
+                <td>@item.IdentityNo</td>
+                <td>@item.IdentityNoVerified</td>
+                <td>@item.StatusId</td>
+                <td>@item.CreatedDate</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="CustomerCreditCard" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    <a class="btn btn-danger" asp-controller="Customer" asp-action="Remove" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

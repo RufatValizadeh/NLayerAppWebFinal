@@ -1,0 +1,13 @@
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\bin\Debug\netstandard2.1\NLayer.Repository.deps.json
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\bin\Debug\netstandard2.1\NLayer.Repository.dll
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\bin\Debug\netstandard2.1\NLayer.Repository.pdb
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\bin\Debug\netstandard2.1\NLayer.Core.dll
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\bin\Debug\netstandard2.1\NLayer.Core.pdb
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.csproj.AssemblyReference.cache
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.AssemblyInfoInputs.cache
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.AssemblyInfo.cs
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.csproj.CopyComplete
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.dll
+C:\Users\Rufat\RiderProjects\NLayerApp\NLayer.Repository\obj\Debug\netstandard2.1\NLayer.Repository.pdb
