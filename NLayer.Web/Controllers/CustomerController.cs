@@ -15,8 +15,9 @@ public class CustomerController : Controller
     private readonly IMapper _mapper;
     private readonly ILogger<CustomerController> _logger;
 
-    
-    public CustomerController(ICustomerService customerService, IMapper mapper, ICustomerCreditCardService service, ILogger<CustomerController> logger)
+
+    public CustomerController(ICustomerService customerService, IMapper mapper, ICustomerCreditCardService service,
+        ILogger<CustomerController> logger)
     {
         _customerService = customerService;
         _mapper = mapper;
@@ -27,14 +28,14 @@ public class CustomerController : Controller
     // GET
     public async Task<IActionResult> Index()
     {
-        return View( await _customerService.GetAllAsync());
+        return View(await _customerService.GetAllAsync());
     }
-    
+
     public Task<IActionResult> Save()
     {
         return Task.FromResult<IActionResult>(View());
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> Save(CustomerDto customerDto)
     {
@@ -45,23 +46,25 @@ public class CustomerController : Controller
             {
                 customerDto.IdentityNoVerified = true;
             }
+
             await _customerService.AddAsync(_mapper.Map<Customer>(customerDto));
             return RedirectToAction(nameof(Index));
         }
 
         return View();
     }
-    
+
     public async Task<bool> OnGet(CustomerDto customerDto)
     {
         var client = new KPSPublicSoapClient(KPSPublicSoapClient.EndpointConfiguration.KPSPublicSoap);
-        var response = await client.TCKimlikNoDogrulaAsync(Convert.ToInt64(customerDto.IdentityNo), customerDto.Name, customerDto.Surname, customerDto.BirthDate);
+        var response = await client.TCKimlikNoDogrulaAsync(Convert.ToInt64(customerDto.IdentityNo), customerDto.Name,
+            customerDto.Surname, customerDto.BirthDate);
         var result = response.Body.TCKimlikNoDogrulaResult;
-        _logger.LogInformation(@"Human: {1}", (string) customerDto.IdentityNo.ToString());
-        
+        _logger.LogInformation(@"Human: {1}", (string)customerDto.IdentityNo.ToString());
+
         return result;
     }
-    
+
     public async Task<IActionResult> Remove(int id)
     {
         var customer = await _customerService.GetByIdAsync(id);

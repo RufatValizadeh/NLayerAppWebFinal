@@ -21,10 +21,8 @@ builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
 
-
-
-
-builder.Services.AddControllersWithViews().AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<CustomerCreditCardDtoValidator>());
+builder.Services.AddControllersWithViews()
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CustomerCreditCardDtoValidator>());
 
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
@@ -37,11 +35,13 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 builder.Host.UseServiceProviderFactory
     (new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
-builder.Services.AddHttpClient("Payzee", client =>
-{
-    client.BaseAddress = new Uri(builder.Configuration.GetSection("RestServices").GetValue<string>("Payzee"));
-} );
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+    containerBuilder.RegisterModule(new RepoServiceModule()));
+builder.Services.AddHttpClient("Payzee",
+    client =>
+    {
+        client.BaseAddress = new Uri(builder.Configuration.GetSection("RestServices").GetValue<string>("Payzee"));
+    });
 
 var app = builder.Build();
 

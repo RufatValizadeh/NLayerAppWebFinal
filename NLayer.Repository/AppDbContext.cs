@@ -26,7 +26,6 @@ public class AppDbContext : DbContext
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
-
         foreach (var item in ChangeTracker.Entries())
         {
             if (item.Entity is BaseEntity entity)
@@ -35,6 +34,7 @@ public class AppDbContext : DbContext
                 entity.UpdatedDate = DateTime.Now;
             }
         }
+
         return base.SaveChangesAsync(cancellationToken);
     }
 }

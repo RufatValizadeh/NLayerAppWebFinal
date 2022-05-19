@@ -18,14 +18,14 @@ public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         var idValue = context.ActionArguments.Values.FirstOrDefault();
-        if (idValue==null)
+        if (idValue == null)
         {
             await next.Invoke();
             return;
         }
 
         var id = (int)idValue;
-        var anyEntity = await _service.AnyAsync(x=>x.Id==id);
+        var anyEntity = await _service.AnyAsync(x => x.Id == id);
 
         if (anyEntity)
         {

@@ -22,7 +22,8 @@ namespace NLayer.Web.Controllers
         private readonly IMapper _mapper;
         private readonly HttpClient _httpClient;
 
-        public CustomerCreditCardController(ICustomerCreditCardService service, ICustomerService customerService, IMapper mapper, IHttpClientFactory httpClient)
+        public CustomerCreditCardController(ICustomerCreditCardService service, ICustomerService customerService,
+            IMapper mapper, IHttpClientFactory httpClient)
         {
             _service = service;
             _customerService = customerService;
@@ -37,29 +38,29 @@ namespace NLayer.Web.Controllers
                 password = "bS3!eG8!",
                 lang = "tr",
                 email = "murat.karayilan@dotto.com.tr"
-                
             };
-            
+
             var requestContent = new StringContent(JsonSerializer.Serialize(payzee), Encoding.UTF8, "application/json");
 
-            var result = await _httpClient.PostAsync("Securities/authenticationMerchant", requestContent).ConfigureAwait(false);
+            var result = await _httpClient.PostAsync("Securities/authenticationMerchant", requestContent)
+                .ConfigureAwait(false);
 
             var response = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
-            
+
             var jsonString = JsonSerializer.Deserialize<PayzeeResponse>(response);
 
             return jsonString.Result;
         }
-        
+
         public async Task<IActionResult> Index()
         {
-            return View( await _service.GetCustomerCreditCardsWithCustomer());
+            return View(await _service.GetCustomerCreditCardsWithCustomer());
         }
 
         public async Task<IActionResult> Save()
         {
             var customers = await _customerService.GetAllAsync();
-            var customersDto =  _mapper.Map<List<CustomerDto>>(customers.ToList());
+            var customersDto = _mapper.Map<List<CustomerDto>>(customers.ToList());
             ViewBag.customers = new SelectList(customersDto, "Id", "Name");
             return View();
         }
@@ -72,8 +73,9 @@ namespace NLayer.Web.Controllers
                 await _service.AddAsync(_mapper.Map<CustomerCreditCard>(customerCreditCardDto));
                 return RedirectToAction(nameof(Index));
             }
+
             var customers = await _customerService.GetAllAsync();
-            var customersDto =  _mapper.Map<List<CustomerDto>>(customers.ToList());
+            var customersDto = _mapper.Map<List<CustomerDto>>(customers.ToList());
             ViewBag.customers = new SelectList(customersDto, "Id", "Name");
 
             return View();
@@ -83,14 +85,14 @@ namespace NLayer.Web.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var customerCreditCard = await _service.GetByIdAsync(id);
-            
+
             var customers = await _customerService.GetAllAsync();
-            var customersDto =  _mapper.Map<List<CustomerDto>>(customers.ToList());
+            var customersDto = _mapper.Map<List<CustomerDto>>(customers.ToList());
             ViewBag.categories = new SelectList(customersDto, "Id", "Name", customerCreditCard.CustomerId);
 
             return View(_mapper.Map<CustomerCreditCardDto>(customerCreditCard));
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Update(CustomerCreditCardDto customerCreditCardDto)
         {
@@ -99,8 +101,9 @@ namespace NLayer.Web.Controllers
                 await _service.UpdateAsync(_mapper.Map<CustomerCreditCard>(customerCreditCardDto));
                 return RedirectToAction(nameof(Index));
             }
+
             var customers = await _customerService.GetAllAsync();
-            var customersDto =  _mapper.Map<List<CustomerDto>>(customers.ToList());
+            var customersDto = _mapper.Map<List<CustomerDto>>(customers.ToList());
             ViewBag.customers = new SelectList(customersDto, "Id", "Name", customerCreditCardDto.CustomerId);
 
             return View(customerCreditCardDto);

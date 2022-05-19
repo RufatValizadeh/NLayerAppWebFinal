@@ -7,9 +7,13 @@ public class CustomerCreditCardDtoValidator : AbstractValidator<CustomerCreditCa
 {
     public CustomerCreditCardDtoValidator()
     {
-        RuleFor(x => x.CardBrand).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
-        RuleFor(x => x.CardPan).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
-        RuleFor(x => x.CustomerId).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
-        RuleFor(x => x.StatusId).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
+        RuleFor(x => x.CardBrand).NotNull().WithMessage("{PropertyName} is required").NotEmpty()
+            .WithMessage("{PropertyName} is required");
+        RuleFor(x => x.CardPan).NotNull().WithMessage("{PropertyName} is required").NotEmpty()
+            .WithMessage("{PropertyName} is required");
+        RuleFor(x => x.CustomerId).NotNull().WithMessage("{PropertyName} is required").NotEmpty()
+            .WithMessage("{PropertyName} is required");
+        RuleFor(x => x.StatusId).NotNull().WithMessage("{PropertyName} is required").NotEmpty()
+            .WithMessage("{PropertyName} is required");
     }
 }

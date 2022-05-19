@@ -5,7 +5,7 @@ using NLayer.Core.Models;
 
 namespace NLayer.Repository.Configurations;
 
-public class TransactionLogConfiguration  : IEntityTypeConfiguration<TransactionLog>
+public class TransactionLogConfiguration : IEntityTypeConfiguration<TransactionLog>
 {
     public void Configure(EntityTypeBuilder<TransactionLog> builder)
     {
@@ -17,9 +17,10 @@ public class TransactionLogConfiguration  : IEntityTypeConfiguration<Transaction
         builder.Property(x => x.CustomerId).IsRequired();
         builder.Property(x => x.StatusId).IsRequired();
         builder.ToTable("TransactionLogs");
-        builder.Property(x=>x.CreatedDate).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
-         builder.HasOne(x => x.Customer).WithMany(x => x.TransactionLogs).HasForeignKey(x => x.CustomerId).OnDelete(DeleteBehavior.Restrict);
-        builder.HasOne(x => x.CustomerCreditCard).WithOne(x => x.TransactionLogs).HasForeignKey<TransactionLog>(x => x.CustomerCreditCardId).OnDelete(DeleteBehavior.Restrict);
-
+        builder.Property(x => x.CreatedDate).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.HasOne(x => x.Customer).WithMany(x => x.TransactionLogs).HasForeignKey(x => x.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne(x => x.CustomerCreditCard).WithOne(x => x.TransactionLogs)
+            .HasForeignKey<TransactionLog>(x => x.CustomerCreditCardId).OnDelete(DeleteBehavior.Restrict);
     }
 }

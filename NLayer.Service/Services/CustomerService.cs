@@ -19,7 +19,8 @@ public class CustomerService : Service<Customer>, ICustomerService
         _mapper = mapper;
     }
 
-    public async Task<CustomResponseDto<CustomerWithCustomerCreditCardsDto>> GetSingleCustomerByIdWithCustomerCreditCardAsync(int customerId)
+    public async Task<CustomResponseDto<CustomerWithCustomerCreditCardsDto>>
+        GetSingleCustomerByIdWithCustomerCreditCardAsync(int customerId)
     {
         var customer = await _customerRepository.GetSingleCustomerByIdWithCustomerCreditCardAsync(customerId);
         var customerDto = _mapper.Map<CustomerWithCustomerCreditCardsDto>(customer);

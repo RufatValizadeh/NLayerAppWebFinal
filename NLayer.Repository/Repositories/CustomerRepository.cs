@@ -14,6 +14,7 @@ public class CustomerRepository : GenericRepository<Customer>, ICustomerReposito
 
     public async Task<Customer> GetSingleCustomerByIdWithCustomerCreditCardAsync(int customerId)
     {
-        return await _context.Customers.Include(x => x.CustomerCreditCards).Where(x => x.Id == customerId).SingleOrDefaultAsync();
+        return await _context.Customers.Include(x => x.CustomerCreditCards).Where(x => x.Id == customerId)
+            .SingleOrDefaultAsync();
     }
 }

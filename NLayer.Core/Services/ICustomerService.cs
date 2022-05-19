@@ -6,6 +6,7 @@ namespace NLayer.Core.Services
 {
     public interface ICustomerService : IService<Customer>
     {
-        public Task<CustomResponseDto<CustomerWithCustomerCreditCardsDto>> GetSingleCustomerByIdWithCustomerCreditCardAsync(int categoryId);
+        public Task<CustomResponseDto<CustomerWithCustomerCreditCardsDto>>
+            GetSingleCustomerByIdWithCustomerCreditCardAsync(int categoryId);
     }
 }

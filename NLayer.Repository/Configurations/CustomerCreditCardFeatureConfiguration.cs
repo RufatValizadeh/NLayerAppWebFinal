@@ -11,6 +11,7 @@ public class CustomerCreditCardFeatureConfiguration : IEntityTypeConfiguration<C
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).UseIdentityColumn();
-        builder.HasOne(x => x.CustomerCreditCard).WithOne(x => x.CustomerCreditCardFeature).HasForeignKey<CustomerCreditCardFeature>(x => x.CustomerCreditCardId);
+        builder.HasOne(x => x.CustomerCreditCard).WithOne(x => x.CustomerCreditCardFeature)
+            .HasForeignKey<CustomerCreditCardFeature>(x => x.CustomerCreditCardId);
     }
 }

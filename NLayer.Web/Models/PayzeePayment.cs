@@ -34,48 +34,49 @@ public class PayzeePayment
     public string maturityPeriod { get; set; }
     public string paymentFrequency { get; set; }
 }
+
 public class BillingInfo
-    {
-        public string taxNo { get; set; }
-        public string taxOffice { get; set; }
-        public string firmName { get; set; }
-        public string identityNumber { get; set; }
-        public string fullName { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public string town { get; set; }
-        public string zipCode { get; set; }
-    }
+{
+    public string taxNo { get; set; }
+    public string taxOffice { get; set; }
+    public string firmName { get; set; }
+    public string identityNumber { get; set; }
+    public string fullName { get; set; }
+    public string email { get; set; }
+    public string phone { get; set; }
+    public string address { get; set; }
+    public string city { get; set; }
+    public string town { get; set; }
+    public string zipCode { get; set; }
+}
 
-    public class Campaign
-    {
-        public string text { get; set; }
-        public string value { get; set; }
-    }
+public class Campaign
+{
+    public string text { get; set; }
+    public string value { get; set; }
+}
 
-    public class DeliveryInfo
-    {
-        public string taxNo { get; set; }
-        public string taxOffice { get; set; }
-        public string firmName { get; set; }
-        public string identityNumber { get; set; }
-        public string fullName { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-        public string town { get; set; }
-        public string zipCode { get; set; }
-    }
+public class DeliveryInfo
+{
+    public string taxNo { get; set; }
+    public string taxOffice { get; set; }
+    public string firmName { get; set; }
+    public string identityNumber { get; set; }
+    public string fullName { get; set; }
+    public string email { get; set; }
+    public string phone { get; set; }
+    public string address { get; set; }
+    public string city { get; set; }
+    public string town { get; set; }
+    public string zipCode { get; set; }
+}
 
-    public class OrderProductList
-    {
-        public int merchantId { get; set; }
-        public string productId { get; set; }
-        public string amount { get; set; }
-        public string productName { get; set; }
-        public string commissionRate { get; set; }
-        public string description { get; set; }
-    }
+public class OrderProductList
+{
+    public int merchantId { get; set; }
+    public string productId { get; set; }
+    public string amount { get; set; }
+    public string productName { get; set; }
+    public string commissionRate { get; set; }
+    public string description { get; set; }
+}

@@ -11,6 +11,5 @@ namespace NLayer.Core.Models
         public Customer Customer { get; set; }
         public CustomerCreditCardFeature CustomerCreditCardFeature { get; set; }
         public TransactionLog TransactionLogs { get; set; }
-        
     }
 }

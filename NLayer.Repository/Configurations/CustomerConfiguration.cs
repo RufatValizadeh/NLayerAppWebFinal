@@ -19,7 +19,6 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.Property(x => x.IdentityNoVerified).IsRequired();
         builder.Property(x => x.StatusId).IsRequired();
         builder.ToTable("Customers");
-        builder.Property(x=>x.CreatedDate).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
-
+        builder.Property(x => x.CreatedDate).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
     }
 }

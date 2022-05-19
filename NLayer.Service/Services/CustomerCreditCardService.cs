@@ -12,7 +12,8 @@ public class CustomerCreditCardService : Service<CustomerCreditCard>, ICustomerC
     private readonly ICustomerCreditCardRepository _customerCreditCardRepository;
     private readonly IMapper _mapper;
 
-    public CustomerCreditCardService(IGenericRepository<CustomerCreditCard> repository, IUnitOfWork unitOfWork, IMapper mapper,
+    public CustomerCreditCardService(IGenericRepository<CustomerCreditCard> repository, IUnitOfWork unitOfWork,
+        IMapper mapper,
         ICustomerCreditCardRepository customerCreditCardRepository) : base(repository, unitOfWork)
     {
         _mapper = mapper;
@@ -22,7 +23,8 @@ public class CustomerCreditCardService : Service<CustomerCreditCard>, ICustomerC
     public async Task<List<CustomerCreditCardWithCustomerDto>> GetCustomerCreditCardsWithCustomer()
     {
         var productsWithCategory = await _customerCreditCardRepository.GetCustomerCreditCardWithCustomer();
-        var customerCreditCardWithCustomerDtos = _mapper.Map<List<CustomerCreditCardWithCustomerDto>>(productsWithCategory);
+        var customerCreditCardWithCustomerDtos =
+            _mapper.Map<List<CustomerCreditCardWithCustomerDto>>(productsWithCategory);
         return customerCreditCardWithCustomerDtos;
     }
 }

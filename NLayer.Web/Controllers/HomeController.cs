@@ -24,7 +24,7 @@ public class HomeController : Controller
     {
         return View();
     }
-    
+
     public async Task<bool> OnGet()
     {
         var client = new KPSPublicSoapClient(KPSPublicSoapClient.EndpointConfiguration.KPSPublicSoap);
@@ -33,11 +33,12 @@ public class HomeController : Controller
         human.LastName = "HAJI";
         human.DocumentNo = 99607335226;
         human.BirthdayYear = 1994;
-        
-        var response = await client.TCKimlikNoDogrulaAsync(Convert.ToInt64(human.DocumentNo), human.Name, human.LastName, human.BirthdayYear);
+
+        var response = await client.TCKimlikNoDogrulaAsync(Convert.ToInt64(human.DocumentNo), human.Name,
+            human.LastName, human.BirthdayYear);
         var result = response.Body.TCKimlikNoDogrulaResult;
-        
-        _logger.LogInformation(@"Human: {1}", (string) human.DocumentNo.ToString());
+
+        _logger.LogInformation(@"Human: {1}", (string)human.DocumentNo.ToString());
         return result;
     }
 

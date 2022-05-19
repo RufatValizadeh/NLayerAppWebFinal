@@ -17,7 +17,7 @@ public class CustomerCreditCardConfiguration : IEntityTypeConfiguration<Customer
         builder.Property(x => x.CardPan).IsRequired().HasMaxLength(16);
         builder.ToTable("Cards");
 
-        builder.Property(x=>x.CreatedDate).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(x => x.CreatedDate).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
         builder.HasOne(x => x.Customer).WithMany(x => x.CustomerCreditCards).HasForeignKey(x => x.CustomerId);
     }
 }
